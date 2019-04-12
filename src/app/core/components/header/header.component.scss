@@ -11,10 +11,6 @@
     color: $color__white;
     font-family: $font__primary--semi-bold;
     font-size: 14px;
-
-    .profile-menu {
-      float: right;
-    }
   }
 
   &__block {
@@ -69,9 +65,5 @@
   .button:hover span:after {
     opacity: 1;
     right: 0;
-  }
-
-  .resizeImage {
-    width: 25%;
   }
 }

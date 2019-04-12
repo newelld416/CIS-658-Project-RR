@@ -1,13 +1,25 @@
 <div>
   <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
-    <mat-tab label="Suggested Restaurants">
-      <app-suggested></app-suggested>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon>search</mat-icon><br>
+            <div class="tab-text">Search Restaurants</div>
+        </ng-template>
+        <app-suggested></app-suggested>
     </mat-tab>
     <mat-tab label="My Restaurants">
+      <ng-template mat-tab-label>
+          <mat-icon>list</mat-icon>
+          <div class="tab-text">My Favorites</div>
+      </ng-template>
       <app-favorite></app-favorite>
     </mat-tab>
     <mat-tab label="Add Restuarant">
-      <app-create></app-create>
+        <ng-template mat-tab-label>
+            <mat-icon>create</mat-icon>
+            <div class="tab-text">Create Restaurant</div>
+        </ng-template>
+        <app-create></app-create>
     </mat-tab>
   </mat-tab-group>
 </div>

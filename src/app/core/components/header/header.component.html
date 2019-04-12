@@ -1,16 +1,16 @@
 <header class="app-header">
   <div class="app-header__wrapper">
-    <div class="app-header__block">
-      <img class="resizeImage" src="assets/static/rr_logo.png">
-    </div>
     <div class="profile-menu">
       <button mat-button [matMenuTriggerFor]="belowMenu">
-        <i class="material-icons">menu</i>
+        <i class="material-icons md-36">menu</i>
       </button>
       <mat-menu #belowMenu="matMenu" yPosition="below">
         <button mat-menu-item><span>Register</span></button>
         <button mat-menu-item><span>Login</span></button>
       </mat-menu>
+    </div>
+    <div class="app-header__block">
+      Restaurant Remembered
     </div>
   </div>
 </header>

@@ -10,4 +10,12 @@
 .example-container > * {
   margin: 10px auto 0px auto;
   width: 80%;
+
+
+}
+
+.tab-text {
+  @media only screen and (max-width: 700px) {
+    display: none;
+  }
 }
