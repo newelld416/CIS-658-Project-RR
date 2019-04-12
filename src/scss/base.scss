@@ -1,0 +1,27 @@
+@import './variables';
+@import './fonts';
+@import './icons';
+@import './amwicons';
+@import './flags';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  font: $text-size $font__primary;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+

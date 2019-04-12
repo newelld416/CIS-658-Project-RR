@@ -1,0 +1,43 @@
+$grid-unit: 8px;
+
+// helpers
+@function getDimension($qty) {
+  @return $grid-unit * $qty;
+}
+
+// layout
+$logo__height: 100%;
+
+// fonts
+// font-size
+$text-size: getDimension(2);
+
+// font-style
+$font__fallback: sans-serif;
+$font__primary: 'SourceSansPro', $font__fallback;
+$font__primary--semi-bold: 'SourceSansProSemiBold', $font__fallback;
+$font__primary--bold: 'SourceSansProBold', $font__fallback;
+$font__roboto-condensed: 'RobotoCondensed', $font__fallback;
+$font__roboto-condensed--bold: 'RobotoCondensedBold', $font__fallback;
+$font__roboto-condensed--light: 'RobotoCondensedLight', $font__fallback;
+
+// colors
+$color__blue: #0075A4;
+$color__blue--dark: #002f5f;
+$color__blue--light: #008fc5;
+$color__grey: #dadada;
+$color__grey--light: #f4f4f4;
+$color__grey--dark: #bbbbbb;
+$color__grey--border: #e3e3e3;
+$color__red: #E11E45;
+$color__green: #22a347;
+$color__white: #ffffff;
+$color__black-shadow: rgba(0, 0, 0, .08);
+$color__black-fade: rgba(0, 0, 0, .5);
+
+$text__color: #56565a;
+$text__color--dark: #262626;
+$text__color--grey: #808285;
+$text__color--green: #20893d;
+$text__color--red: $color__red;
+$text__color--inactive: #ababab;

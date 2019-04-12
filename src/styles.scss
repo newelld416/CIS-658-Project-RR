@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~reset-css/reset.css";
+
+/**
+  Angular Material core theme.
+  Including a theme is required to apply all of the core and theme styles to your application.
+  To get started with a prebuilt theme, include one of Angular Material's prebuilt themes globally in your application.
+  For more info refer to the theming guide: https://material.angular.io/guide/theming
+ */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import '~scss/base';

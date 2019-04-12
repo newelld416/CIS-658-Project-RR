@@ -1,0 +1,48 @@
+@import '~scss/variables';
+
+.app-footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+  &__container {
+    padding: 40px 0;
+    background: $color__blue--dark;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-copyright{
+      font-family: $font__primary--semi-bold;
+    }
+
+    li {
+      display: inline-flex;
+      position: relative;
+      padding: 0 10px;
+
+      &:after {
+        position: absolute;
+        top:50%;
+        margin-top: -5px;
+        left:0;
+        width: 1px;
+        height: 10px;
+        background: $color__white;
+        content: ' ';
+      }
+
+      &:first-child {
+        &:after {
+          display: none;
+        }
+      }
+
+      a {
+        color: $color__white;
+      }
+    }
+  }
+}

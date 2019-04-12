@@ -1,0 +1,43 @@
+@at-root {
+  @font-face {
+    font-family: 'RobotoCondensed';
+    src: url('assets/fonts/RobotoCondensed/RobotoCondensed-Regular.woff2') format('woff2'),
+    url('assets/fonts/RobotoCondensed/RobotoCondensed-Regular.woff') format('woff');
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'RobotoCondensedBold';
+    src: url('assets/fonts/RobotoCondensed/RobotoCondensed-Bold.woff2') format('woff2'),
+    url('assets/fonts/RobotoCondensed/RobotoCondensed-Bold.woff') format('woff');
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: 'RobotoCondensedLight';
+    src: url('assets/fonts/RobotoCondensed/RobotoCondensed-Light.woff2') format('woff2'),
+    url('assets/fonts/RobotoCondensed/RobotoCondensed-Light.woff') format('woff');
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: 'SourceSansPro';
+    src: url('assets/fonts/SourceSansPro/SourceSansPro-Regular.woff2') format('woff2'),
+    url('assets/fonts/SourceSansPro/SourceSansPro-Regular.woff') format('woff');
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'SourceSansProSemiBold';
+    src: url('assets/fonts/SourceSansPro/SourceSansPro-Semibold.woff2') format('woff2'),
+    url('assets/fonts/SourceSansPro/SourceSansPro-Semibold.woff') format('woff');
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: 'SourceSansProBold';
+    src: url('assets/fonts/SourceSansPro/SourceSansPro-Bold.woff2') format('woff2'),
+    url('assets/fonts/SourceSansPro/SourceSansPro-Bold.woff') format('woff');
+    font-weight: 700;
+  }
+}
