@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
@@ -11,6 +12,7 @@ import { CreateComponent } from './create/create.component';
   imports: [
     CommonModule,
     MaterialModule,
+    FlexLayoutModule,
   ],
 })
 export class HomeModule { }

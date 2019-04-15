@@ -62,6 +62,8 @@ import {
   MatTreeModule,
 } from '@angular/material';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 /**
  * Register global data to be used internally by Angular.
  * By default, Angular uses the locale en-US, which is English as spoken in the United States of America.
@@ -88,6 +90,7 @@ registerLocaleData(esDoLocale);
     CoreModule,
     SharedModule,
     HomeModule,
+    FlexLayoutModule,
 
     // Material Modules
     A11yModule,
