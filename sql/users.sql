@@ -16,3 +16,6 @@ DELETE FROM `test`.`users` WHERE userId > 0;
 
 /* Delete an existing user */
 DELETE FROM `test`.`users` WHERE userId = 1;
+
+/* Get max user id */
+SELECT MAX(userId) FROM `test`.`users`;

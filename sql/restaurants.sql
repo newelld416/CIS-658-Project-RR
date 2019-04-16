@@ -16,3 +16,6 @@ DELETE FROM `test`.`restaurants` WHERE id > 0;
 
 /* Delete an existing user */
 DELETE FROM `test`.`restaurants` WHERE id = 1;
+
+/* Get max restaurant id */
+SELECT MAX(id) FROM `test`.`restaurants`;
