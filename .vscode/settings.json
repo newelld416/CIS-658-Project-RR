@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "connectionTimeout": 30,
+            "database": "test",
+            "dialect": "MySQL",
+            "name": "test",
+            "password": "Password",
+            "port": 3306,
+            "server": "test-database.cvilteyshbxv.us-east-2.rds.amazonaws.com",
+            "username": "Username"
+        }
+    ]
+}
