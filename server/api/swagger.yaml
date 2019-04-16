@@ -23,6 +23,37 @@ paths:
         200:
           description: ""
       x-swagger-router-controller: "Default"
+  /restaurants:
+    get:
+      operationId: "getRestaurants"
+      responses:
+        200:
+          description: ""
+      x-swagger-router-controller: "Default"
+  /restaurants/{restaurantId}:
+    get:
+      operationId: "getRestaurantsById"
+      parameters:
+      - name: "restaurantId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: ""
+      x-swagger-router-controller: "Default"
+  /favorites/{userId}:
+    get:
+      operationId: "getFavoritesByUserId"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: ""
+      x-swagger-router-controller: "Default"
 definitions:
   Payload:
     type: "object"
