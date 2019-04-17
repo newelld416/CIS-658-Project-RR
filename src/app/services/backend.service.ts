@@ -12,6 +12,11 @@ const routes = {
     console.log(url);
     return url;
   },
+  createRestaurant: () => {
+    const url = `${BASE_URL}restaurants`;
+    console.log(url);
+    return url;
+  },
 };
 
 export interface Context {
@@ -33,6 +38,19 @@ export class BackendService {
         map((body: any) => {
           return body;
         }),
+        catchError(() => of('There was an error')),
+      );
+  }
+
+  createRestaurant(body: any): Observable<string | object> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+
+    return this.httpClient
+      .post<any>(routes.createRestaurant(), body, httpOptions)
+      .pipe(
+        map((returnBody: object) => returnBody),
         catchError(() => of('There was an error')),
       );
   }

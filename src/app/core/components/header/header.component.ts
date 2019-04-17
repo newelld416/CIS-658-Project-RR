@@ -9,26 +9,25 @@ import { User } from '../../../models/user.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
-
+  isLoading: boolean;
   user: User;
+  username: string;
   isAuthenticated: boolean;
 
   /**
    * This is my constructor
    */
   constructor(private oktaAuth: OktaAuthService) {
-    // get authentication state for immediate use
-    this.oktaAuth.isAuthenticated().then((result: boolean) => {
-      this.isAuthenticated = result;
-    });
-
-    this.oktaAuth.getUser().then((user: User) => {
-      this.user = user;
-    });
+    // Set up initial authorization logic
+    this.oktaAuth.isAuthenticated().then((result: boolean) => { this.isAuthenticated = result; });
+    this.oktaAuth.getUser().then((user: User) => { this.user = user; });
 
     // subscribe to authentication state changes
     this.oktaAuth.$authenticationState.subscribe((isAuthenticated: boolean)  => {
       this.isAuthenticated = isAuthenticated;
+      this.oktaAuth.getUser().then((user: User) => {
+        this.user = user;
+      });
     });
   }
 
@@ -42,13 +41,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    console.log('execute logout');
-    this.oktaAuth.logout('/home');
-    window.location.reload();
+    this.oktaAuth.logout();
   }
-
-  get username(): string | null {
-    return this.user ? this.user.email : null;
-  }
-
 }

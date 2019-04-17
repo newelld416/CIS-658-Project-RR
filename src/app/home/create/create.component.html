@@ -1,27 +1,25 @@
-<div class="example-container">
+<form class="example-container" #form>
   <mat-form-field appearance="outline">
     <mat-label>Restaurant Name</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Enter the restaurant name" #name required>
+    <mat-error *ngIf="name.errors?.required">name is required</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Restaurant Address</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Enter the restaurant address" #address required>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Restaurant Phone Number</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Enter the restaurant phone number" #phone required>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Restaurant Description</mat-label>
-    <input matInput placeholder="Placeholder">
+    <input matInput placeholder="Enter the restaurant description" #description>
   </mat-form-field>
 
-  <button mat-raised-button>Clear</button>
-  <br>
-  <button mat-raised-button>Submit</button>
-
-</div>
-
+  <button mat-raised-button type='reset'>Clear</button><br>
+  <button mat-raised-button (click)="createRestaurant($event, name.value, address.value, phone.value, description.value, form)">Submit</button>
+</form>

@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+import { OktaCallbackComponent } from '@okta/okta-angular';
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [OktaAuthGuard],
   },
   {
     path: 'implicit/callback',
@@ -18,7 +17,6 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: '/home',
-    canActivate: [OktaAuthGuard],
   },
 ];
 

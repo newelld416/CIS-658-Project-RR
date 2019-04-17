@@ -5,9 +5,15 @@
         <i class="material-icons md-36">menu</i>
       </button>
       <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item><span>Register</span></button>
-        <button mat-menu-item><span>Login</span></button>
-        <button mat-menu-item (click)="logout()"><span>Logout</span></button>
+        <button mat-menu-item [disabled]="true"><span>Register</span></button>
+
+        <div *ngIf="!isAuthenticated">
+          <button mat-menu-item (click)="login()"><span>Login</span></button>
+        </div>
+        <div *ngIf="isAuthenticated">
+          <button mat-menu-item [disabled]="true"><span>{{user.email}}</span></button>
+          <button mat-menu-item (click)="logout()"><span>Logout</span></button>
+        </div>
       </mat-menu>
     </div>
     <div class="app-header__block">

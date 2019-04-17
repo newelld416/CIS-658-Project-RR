@@ -8,6 +8,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { SuggestedComponent } from './suggested/suggested.component';
 import { CreateComponent } from './create/create.component';
 import { BackendService } from '@app/services/backend.service';
+import { OktaAuthService } from '@okta/okta-angular';
 @NgModule({
   declarations: [HomeComponent, FavoriteComponent, SuggestedComponent, CreateComponent],
   imports: [
@@ -17,6 +18,7 @@ import { BackendService } from '@app/services/backend.service';
   ],
   providers: [
     BackendService,
+    OktaAuthService,
   ],
 })
 export class HomeModule { }
