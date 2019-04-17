@@ -7,6 +7,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ConfigService } from '@services';
 import { TranslateHttpLoaderFactory } from '@services/i18n/translate-loader.config';
 import { FooterComponent, HeaderComponent } from '@app/core/components';
+import { OktaAuthService } from '@okta/okta-angular';
 
 import { MaterialModule } from '@app/material.module';
 
@@ -32,6 +33,9 @@ const TRANSLATE_MODULE_CONFIG = {
     TranslateModule.forRoot(TRANSLATE_MODULE_CONFIG),
     MaterialModule,
     HttpClientModule,
+  ],
+  providers: [
+    OktaAuthService,
   ],
   exports: [
     ...COMPONENTS,
