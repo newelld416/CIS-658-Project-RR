@@ -8,6 +8,12 @@ var connection = mysql.createConnection({
   host : config.host, user : config.user, password : config.password, database : config.database
 });
 
+module.exports.addUser = function addUser (req, res, next) {
+  getId(1, function(id) {
+    execute(`INSERT INTO users (userId, email, firstName, lastName) VALUES (${id}, '${req.body.email}','${req.body.firstName}', '${req.body.lstName}');`, res);
+  });
+}
+
 module.exports.getUsers = function getUsers (req, res, next) {
   execute('SELECT * from users', res);
 };
@@ -21,11 +27,9 @@ module.exports.getRestaurants = function getRestaurants (req, res, next) {
 };
 
 module.exports.addRestaurant = function addRestaurant (req, res, next) {
-  let body = req.body;
-  execute(
-    `INSERT INTO restaurants (id,name,address,phone,description) VALUES (${body.id}, '${body.name}','${body.address}', '${body.phone}', '${body.description}')`,
-    res
-  );
+  getId(2, function(id) {
+    execute(`INSERT INTO restaurants (id,name,address,phone,description) VALUES (${id}, '${req.body.name}','${req.body.address}', '${req.body.phone}', '${req.body.description}')`,res);
+  });
 }
 
 module.exports.getRestaurantsById = function getRestaurantsById (req, res, next) {
@@ -35,6 +39,20 @@ module.exports.getRestaurantsById = function getRestaurantsById (req, res, next)
 module.exports.getFavoritesByUserId = function getFavoritesByUserId (req, res, next) {
   execute(`SELECT * from favorites where userId = ${req.url.split('/')[2]}`, res);
 };
+
+module.exports.addFavorite = function addFavorite (req, res, next) {
+  execute(`INSERT INTO favorites (userId,restaurantId) VALUES (${req.body.userId}, '${req.body.restaurantId}')`, res);
+}
+
+function getId(type, callback) {
+  const query = type == 1 ? 'SELECT MAX(userId) as id FROM users' : 'SELECT MAX(id) as id FROM restaurants';
+  connection.query(query, function(err, rows, fields) {
+    let response = JSON.parse(JSON.stringify(rows));
+    let oldId = response[0].id;
+    let newId = oldId + 1;
+    callback(newId);
+  });
+}
 
 function execute(query, res) {
   console.log(query);

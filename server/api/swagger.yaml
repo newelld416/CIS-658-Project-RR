@@ -11,6 +11,19 @@ paths:
         200:
           description: ""
       x-swagger-router-controller: "Default"
+    post:
+      operationId: "addUser"
+      parameters:
+      - in: "body"
+        name: "Payload"
+        description: "Request Body"
+        required: true
+        schema:
+          $ref: "#/definitions/Payload"
+      responses:
+        200:
+          description: ""
+      x-swagger-router-controller: "Default"
   /users/{userId}:
     get:
       operationId: "getUsersByUserId"
@@ -51,6 +64,20 @@ paths:
         in: "path"
         required: true
         type: "string"
+      responses:
+        200:
+          description: ""
+      x-swagger-router-controller: "Default"
+  /favorites:
+    post:
+      operationId: "addFavorite"
+      parameters:
+      - in: "body"
+        name: "Payload"
+        description: "Request Body"
+        required: true
+        schema:
+          $ref: "#/definitions/Payload"
       responses:
         200:
           description: ""

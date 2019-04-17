@@ -14,8 +14,6 @@ INSERT INTO `test`.`restaurants` (`id`, `name`, `address`, `phone`, `description
 INSERT INTO `test`.`restaurants` (`id`, `name`, `address`, `phone`, `description`) VALUES (4, 'Arbys','620 44th St SE, Kentwood, MI 49508', '(616) 530-0030', 'This is a Arbys');
 INSERT INTO `test`.`restaurants` (`id`, `name`, `address`, `phone`, `description`) VALUES (5, 'Panera','99 Monroe Ave NW, Grand Rapids, MI 49503', '(616) 451-4007', 'This is a Panera');
 
-INSERT INTO `test`.`restaurants` (id, name, address, phone, description) VALUES (6, 'New Restaurant','blah blah blah', '(616) 787-9500', 'Test Description');
-
 /* Delete all restaurants */
 DELETE FROM `test`.`restaurants` WHERE id > 5;
 
