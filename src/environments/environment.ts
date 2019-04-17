@@ -25,11 +25,6 @@ export const environment: EnvConfig = { // TODO: clean up
     assets: I18N_ASSETS,
     countries: I18N_COUNTRIES,
   },
-  cloudWatchDomain: 'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logEventViewer:group=',
-  ecsUtilitiesUrl: 'https://ecs-utilities.preprod.amer.amway.net',
-  kafkaUtilitiesUrl: 'http://kafka-rest-proxy-preprod.preprod.amer.amway.net',
-  applyChanges: false,
-  searchForceUrl: 'http://search-force.preprod.amer.amway.net',
   oktaConfig: {
     issuer: 'https://dev-587527.oktapreview.com/oauth2/default',
     clientId: '0oainf6sqdsP8vwbq0h7',

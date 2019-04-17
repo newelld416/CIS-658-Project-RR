@@ -29,11 +29,6 @@ export interface EnvConfig {
   production: boolean;
   api: ApiEndpoints;
   i18n: I18nConfig;
-  cloudWatchDomain: string;
-  ecsUtilitiesUrl: string;
-  kafkaUtilitiesUrl: string;
-  applyChanges: boolean;
-  searchForceUrl: string;
   oktaConfig: OktaConfig;
   envValue: string;
 }
