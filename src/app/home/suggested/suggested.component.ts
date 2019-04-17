@@ -1,4 +1,6 @@
+import { BackendService } from '@app/services/backend.service';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 
 export interface Restaurants {
   name: string;
@@ -60,10 +62,15 @@ export class SuggestedComponent implements OnInit {
 
   suggestedRestaurants: Restaurants[];
 
-  constructor() { }
+  constructor(private backend: BackendService) { }
 
   ngOnInit() {
     this.suggestedRestaurants = SUGGESTED_RESTAURANTS;
+    this.backend.getRestaurants()
+        .pipe(finalize(() => { }))
+        .subscribe((response) => {
+          console.log(response);
+        });
   }
 
 }

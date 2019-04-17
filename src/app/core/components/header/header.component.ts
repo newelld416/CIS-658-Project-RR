@@ -18,15 +18,6 @@ export class HeaderComponent implements OnInit {
   /**
    * This is my ngOnInit
    */
-  ngOnInit() {
-    const uppercaseString = this.uppercase('lowercase');
-    console.log(uppercaseString);
-  }
+  ngOnInit() { }
 
-  /**
-   * Private test method
-   */
-  uppercase(testString: string): string {
-    return testString.toUpperCase();
-  }
 }

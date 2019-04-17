@@ -66,7 +66,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
   OktaAuthModule,
-  OktaAuthGuard
+  OktaAuthGuard,
 } from '@okta/okta-angular';
 
 import { environment } from '@env/environment';
@@ -97,7 +97,7 @@ registerLocaleData(esDoLocale);
     SharedModule,
     HomeModule,
     FlexLayoutModule,
-    OktaAuthModule.initAuth(environment.oktaConfig)
+    OktaAuthModule.initAuth(environment.oktaConfig),
 
     // Material Modules
     A11yModule,

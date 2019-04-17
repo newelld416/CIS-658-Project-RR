@@ -7,12 +7,16 @@ import { MaterialModule } from '@app/material.module';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { SuggestedComponent } from './suggested/suggested.component';
 import { CreateComponent } from './create/create.component';
+import { BackendService } from '@app/services/backend.service';
 @NgModule({
   declarations: [HomeComponent, FavoriteComponent, SuggestedComponent, CreateComponent],
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
+  ],
+  providers: [
+    BackendService,
   ],
 })
 export class HomeModule { }

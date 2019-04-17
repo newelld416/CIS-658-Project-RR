@@ -1,7 +1,8 @@
 'use strict';
 
-var app = require('connect')();
+var app = require('express')();
 var http = require('http');
+var cors = require('cors');
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
@@ -25,6 +26,9 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Validate Swagger requests
   app.use(middleware.swaggerValidator());
+
+  // Implement Cors Library
+  app.use(cors())
 
   // Route validated requests to appropriate controller
   app.use(middleware.swaggerRouter(options));
