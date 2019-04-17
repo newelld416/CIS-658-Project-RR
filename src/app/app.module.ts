@@ -64,6 +64,12 @@ import {
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import {
+  OktaAuthModule,
+  OktaAuthGuard
+} from '@okta/okta-angular';
+
+import { environment } from '@env/environment';
 /**
  * Register global data to be used internally by Angular.
  * By default, Angular uses the locale en-US, which is English as spoken in the United States of America.
@@ -91,6 +97,7 @@ registerLocaleData(esDoLocale);
     SharedModule,
     HomeModule,
     FlexLayoutModule,
+    OktaAuthModule.initAuth(environment.oktaConfig)
 
     // Material Modules
     A11yModule,
@@ -135,6 +142,9 @@ registerLocaleData(esDoLocale);
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+  ],
+  providers: [
+    OktaAuthGuard,
   ],
   bootstrap: [AppComponent],
 })

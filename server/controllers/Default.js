@@ -20,6 +20,14 @@ module.exports.getRestaurants = function getRestaurants (req, res, next) {
   execute('SELECT * from restaurants', res);
 };
 
+module.exports.addRestaurant = function addRestaurant (req, res, next) {
+  let body = req.body;
+  execute(
+    `INSERT INTO restaurants (id,name,address,phone,description) VALUES (${body.id}, '${body.name}','${body.address}', '${body.phone}', '${body.description}')`,
+    res
+  );
+}
+
 module.exports.getRestaurantsById = function getRestaurantsById (req, res, next) {
   execute(`SELECT * from restaurants where id = ${req.url.split('/')[2]}`, res);
 };

@@ -19,7 +19,6 @@ INSERT INTO `test`.`favorites` (`userId`, `restaurantId`) VALUES (5, 1);
 INSERT INTO `test`.`favorites` (`userId`, `restaurantId`) VALUES (5, 2);
 INSERT INTO `test`.`favorites` (`userId`, `restaurantId`) VALUES (5, 5);
 
-
 /* Delete all users */
 DELETE FROM `test`.`favorites` WHERE userId > 0;
 

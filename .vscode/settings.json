@@ -2,7 +2,7 @@
     "sqltools.connections": [
         {
             "askForPassword": false,
-            "connectionTimeout": 30,
+            "connectionTimeout": 100000,
             "database": "test",
             "dialect": "MySQL",
             "name": "test",

@@ -2,6 +2,7 @@
   "name": "dan-newell-test",
   "version": "0.0.0",
   "scripts": {
+    "prestart": "npm install",
     "start": "ng serve",
     "build": "ng build",
     "build:qa": "npm run build -- --configuration=qa",
@@ -40,6 +41,7 @@
     "@ngrx/store-devtools": "^7.3.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "@okta/okta-angular": "^1.0.7",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
     "material-design-icons": "^3.0.1",

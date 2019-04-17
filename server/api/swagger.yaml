@@ -30,6 +30,19 @@ paths:
         200:
           description: ""
       x-swagger-router-controller: "Default"
+    post:
+      operationId: "addRestaurant"
+      parameters:
+      - in: "body"
+        name: "Payload"
+        description: "Request Body"
+        required: true
+        schema:
+          $ref: "#/definitions/Payload"
+      responses:
+        200:
+          description: ""
+      x-swagger-router-controller: "Default"
   /restaurants/{restaurantId}:
     get:
       operationId: "getRestaurantsById"
