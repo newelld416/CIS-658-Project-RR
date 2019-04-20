@@ -1,7 +1,8 @@
 version: 0.2
 env:
     variables:
-        S3_BUCKET: "restaurants-prod"
+        BUILD_ENV: "prod"
+        S3_BUCKET: "restaurants"
 phases:
     install:
         commands:
@@ -16,10 +17,10 @@ phases:
     post_build:
          commands:
             # Clear S3 bucket.
-            - aws s3 rm s3://restaurants-prod --recursive
+            - aws s3 rm s3://${S3_BUCKET}-${BUILD_ENV} --recursive
             - echo S3 bucket is cleared.
             # Copy dist folder to S3 bucket
-            - aws s3 cp dist s3://restaurants-prod --recursive
+            - aws s3 cp dist s3://${S3_BUCKET}-${BUILD_ENV} --recursive
 artifacts:
     files:
         - '**/*'
