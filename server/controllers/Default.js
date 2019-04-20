@@ -55,9 +55,12 @@ function getId(type, callback) {
 }
 
 function execute(query, res) {
-  console.log(query);
-  connection.query(query, function(err, rows, fields) {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(rows));
-  });
+  setTimeout(function() {
+    connection.query(query, function(err, rows, fields) {
+      console.log(query);
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(rows));
+    });
+  }, 500);
+
 }

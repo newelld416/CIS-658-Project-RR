@@ -1,6 +1,6 @@
 import { BackendService } from './../../services/backend.service';
 import { OktaAuthService } from '@okta/okta-angular';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '@app/models/user.model';
 import { NgForm } from '@angular/forms';
 
@@ -8,7 +8,6 @@ import { NgForm } from '@angular/forms';
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateComponent implements OnInit {
   user: User;
@@ -26,6 +25,7 @@ export class CreateComponent implements OnInit {
         .subscribe((response: object) => {
           console.log(response);
           form.reset();
+          window.location.reload();
         });
 
     });

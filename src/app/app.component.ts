@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { I18nService, ConfigService } from '@services';
 import { CountryCd } from '@models';
@@ -7,7 +7,6 @@ import { CountryCd } from '@models';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   constructor(
