@@ -22,6 +22,10 @@ module.exports.getUsersByUserId = function getUsersByUserId (req, res, next) {
   execute(`SELECT * from users where userId = ${req.url.split('/')[2]}`, res);
 };
 
+module.exports.getUsersByEmail = function getUsersByUserId (req, res, next) {
+  execute(`SELECT * from users where email = '${req.url.split('/')[3]}'`, res);
+};
+
 module.exports.getRestaurants = function getRestaurants (req, res, next) {
   execute('SELECT * from restaurants', res);
 };

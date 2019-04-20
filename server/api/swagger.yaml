@@ -36,6 +36,18 @@ paths:
         200:
           description: ""
       x-swagger-router-controller: "Default"
+  /users/email/{email}:
+    get:
+      operationId: "getUsersByEmail"
+      parameters:
+      - name: "email"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: ""
+      x-swagger-router-controller: "Default"
   /restaurants:
     get:
       operationId: "getRestaurants"
