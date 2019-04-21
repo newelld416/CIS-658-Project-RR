@@ -12,6 +12,11 @@ export interface Restaurant {
   description: string;
 }
 
+export interface Favorite {
+  userId: number;
+  restaurantId: string;
+}
+
 @Component({
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
@@ -22,6 +27,7 @@ export class FavoriteComponent implements OnInit {
   isLoading: boolean;
   displayedColumns: string[] = ['name', 'address', 'phone', 'description'];
   dataSource = new MatTableDataSource();
+  favorites: Favorite[] = [];
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -31,15 +37,31 @@ export class FavoriteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.backend.getRestaurants()
-      .pipe(finalize(() => {
-        this.isLoading = false;
-      }))
-      .subscribe((response) => {
-        this.dataSource = new MatTableDataSource(response);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      });
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.getFavoritesByUserId(user);
+  }
+
+  getFavoritesByUserId(user: any) {
+    if (user) {
+      this.dataSource = new MatTableDataSource(this.favorites);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.backend.getFavoritesByUserId({ id: user.userId })
+        .pipe(finalize(() => {
+          this.isLoading = false;
+        }))
+        .subscribe((response) => {
+          for (const favorite of response) {
+            const newFav: Favorite = favorite;
+            this.backend.getRestaurantById({ id: newFav.restaurantId })
+              .subscribe((restaurantResponse) => {
+                this.favorites.push(restaurantResponse[0] as Favorite);
+                this.dataSource.data = this.favorites;
+              });
+          }
+          this.isLoading = true;
+        });
+    }
   }
 
 }

@@ -11,7 +11,7 @@
           <button mat-menu-item (click)="login()"><span>Login</span></button>
         </div>
         <div *ngIf="isAuthenticated">
-          <button mat-menu-item [disabled]="true"><span>{{user.email}}</span></button>
+          <button mat-menu-item [disabled]="true"><span>{{userEmail}}</span></button>
           <button mat-menu-item (click)="logout()"><span>Logout</span></button>
         </div>
       </mat-menu>

@@ -45,6 +45,7 @@ module.exports.getFavoritesByUserId = function getFavoritesByUserId (req, res, n
 };
 
 module.exports.addFavorite = function addFavorite (req, res, next) {
+  console.log('add favorite');
   execute(`INSERT INTO favorites (userId,restaurantId) VALUES (${req.body.userId}, '${req.body.restaurantId}')`, res);
 }
 

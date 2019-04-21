@@ -20,15 +20,13 @@ export class CreateComponent implements OnInit {
   createRestaurant($event: any, name: string, address: string, phone: string, description: string, form: NgForm) {
     $event.preventDefault();
     this.oktaAuth.getUser().then((user: User) => {
-      console.log('Create restaurant by user: ' + user.email);
-      this.backend.createRestaurant({ name, address, phone, description })
-        .subscribe((response: object) => {
-          console.log(response);
-          form.reset();
-          window.location.reload();
-        });
-
+      if (user) {
+        this.backend.createRestaurant({ name, address, phone, description })
+          .subscribe(() => {
+            form.reset();
+            window.location.reload();
+          });
+      }
     });
   }
-
 }

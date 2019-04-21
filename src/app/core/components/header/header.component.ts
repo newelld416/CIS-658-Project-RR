@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   user: User;
   username: string;
   isAuthenticated: boolean;
+  userEmail = '';
 
   /**
    * This is my constructor
@@ -21,18 +22,26 @@ export class HeaderComponent implements OnInit {
     // Set up initial authorization logic
     this.oktaAuth.isAuthenticated().then((result: boolean) => { this.isAuthenticated = result; });
     this.oktaAuth.getUser().then((user: User) => {
-      console.log('getUser');
-      this.user = user;
-      this.setUser(this.user);
+      if (user) {
+        this.user = user;
+        this.userEmail = this.user.email;
+        this.setUser(this.user);
+      } else {
+        this.removeUser();
+      }
     });
 
     // subscribe to authentication state changes
     this.oktaAuth.$authenticationState.subscribe((isAuthenticated: boolean)  => {
-      console.log('subscribe');
       this.isAuthenticated = isAuthenticated;
       this.oktaAuth.getUser().then((user: User) => {
         this.user = user;
-        this.setUser(this.user);
+        if (user) {
+          this.userEmail = this.user.email;
+          this.setUser(this.user);
+        } else {
+          this.removeUser();
+        }
       });
     });
   }
@@ -42,6 +51,10 @@ export class HeaderComponent implements OnInit {
       .subscribe((response) => {
         localStorage.setItem('user', JSON.stringify(response[0]));
       });
+  }
+
+  removeUser() {
+    localStorage.removeItem('user');
   }
 
   /**
@@ -55,5 +68,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.oktaAuth.logout();
+    localStorage.removeItem('user');
   }
 }

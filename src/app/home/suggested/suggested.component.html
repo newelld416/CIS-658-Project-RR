@@ -16,8 +16,7 @@
             <p>{{suggestion.phone}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button [disabled]="isAuthenticated">LIKE</button>
-            <button mat-button [disabled]="isAuthenticated">SHARE</button>
+            <button mat-button [disabled]="!isAuthenticated" (click)="addFavorite(suggestion)">Save as Favorite</button>
           </mat-card-actions>
         </mat-card>
       </div>
