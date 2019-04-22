@@ -70,6 +70,7 @@ import {
 } from '@okta/okta-angular';
 
 import { environment } from '@env/environment';
+import { RegisterModule } from './register/register.module';
 /**
  * Register global data to be used internally by Angular.
  * By default, Angular uses the locale en-US, which is English as spoken in the United States of America.
@@ -96,6 +97,7 @@ registerLocaleData(esDoLocale);
     CoreModule,
     SharedModule,
     HomeModule,
+    RegisterModule,
     FlexLayoutModule,
     OktaAuthModule.initAuth(environment.oktaConfig),
 

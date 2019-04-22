@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
 import { User } from '../../../models/user.model';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,7 +20,7 @@ export class HeaderComponent implements OnInit {
   /**
    * This is my constructor
    */
-  constructor(private oktaAuth: OktaAuthService, private backend: BackendService) {
+  constructor(private oktaAuth: OktaAuthService, private backend: BackendService, private router: Router) {
     // Set up initial authorization logic
     this.oktaAuth.isAuthenticated().then((result: boolean) => { this.isAuthenticated = result; });
     this.oktaAuth.getUser().then((user: User) => {
@@ -70,4 +72,9 @@ export class HeaderComponent implements OnInit {
     this.oktaAuth.logout();
     localStorage.removeItem('user');
   }
+
+  navigate(route: string) {
+    this.router.navigate([`/${route}`]);
+  }
+
 }

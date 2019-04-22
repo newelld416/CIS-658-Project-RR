@@ -5,7 +5,7 @@
         <i class="material-icons md-36">menu</i>
       </button>
       <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item [disabled]="true"><span>Register</span></button>
+        <button mat-menu-item (click)="navigate('register')"><span>Register</span></button>
 
         <div *ngIf="!isAuthenticated">
           <button mat-menu-item (click)="login()"><span>Login</span></button>
@@ -16,7 +16,7 @@
         </div>
       </mat-menu>
     </div>
-    <div class="app-header__block">
+    <div class="app-header__block" (click)="navigate('home')">
       Restaurant Remembered
     </div>
   </div>

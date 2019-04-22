@@ -2,25 +2,39 @@
   <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="!isLoading">
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let restaurant"> {{restaurant.name}} </td>
-    </ng-container>
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
-      <td mat-cell *matCellDef="let restaurant"> {{restaurant.address}} </td>
-    </ng-container>
-    <ng-container matColumnDef="phone">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
-      <td mat-cell *matCellDef="let restaurant"> {{restaurant.phone}} </td>
-    </ng-container>
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-      <td mat-cell *matCellDef="let restaurant"> {{restaurant.description}} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+  <div *ngIf="!isAuthenticated">
+    You are not authenticated
+  </div>
+  <div *ngIf="isAuthenticated">
+    <div class="container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let restaurant">
+              {{restaurant.name}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+            <mat-cell *matCellDef="let restaurant">
+              <span class="mobile-label">Address:</span>{{restaurant.address}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+            <mat-cell *matCellDef="let restaurant">
+              <span class="mobile-label">Phone:</span>{{restaurant.phone}}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let restaurant">
+              <span class="mobile-label">Desc: </span>{{restaurant.description}}
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+  </div>
 </div>

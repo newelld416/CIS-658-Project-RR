@@ -1,0 +1,25 @@
+<div *ngIf="!isLoading">
+  <form class="example-container" #form>
+    <mat-form-field appearance="outline">
+      <mat-label>Frist Name</mat-label>
+      <input matInput placeholder="Enter the users first name" #fName required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Enter the users last name" #lName required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Enter the users emal" #email required>
+    </mat-form-field>
+
+    <button mat-raised-button type='reset'>Clear</button><br>
+    <button mat-raised-button (click)="registerUser(fName.value, lName.value, email.value, form)">Submit</button>
+  </form>
+
+</div>
+<div *ngIf="isLoading">
+  Loading
+</div>

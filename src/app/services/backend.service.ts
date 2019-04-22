@@ -12,6 +12,11 @@ const routes = {
     console.log(url);
     return url;
   },
+  createUser: () => {
+    const url = `${BASE_URL}users`;
+    console.log(url);
+    return url;
+  },
   getRestaurants: () => {
     const url = `${BASE_URL}restaurants`;
     console.log(url);
@@ -61,6 +66,19 @@ export class BackendService {
         map((body: any) => {
           return body;
         }),
+        catchError(() => of('There was an error')),
+      );
+  }
+
+  createUser(body: any): Observable<string | object> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+
+    return this.httpClient
+      .post<any>(routes.createUser(), body, httpOptions)
+      .pipe(
+        map((returnBody: object) => returnBody),
         catchError(() => of('There was an error')),
       );
   }

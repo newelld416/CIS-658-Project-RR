@@ -11,10 +11,13 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
   user: User;
+  isAuthenticated: boolean;
+
   constructor(private oktaAuth: OktaAuthService, private backend: BackendService) { }
 
   ngOnInit() {
-
+    this.oktaAuth.isAuthenticated().then((result: boolean) => { this.isAuthenticated = result; });
+    this.oktaAuth.$authenticationState.subscribe((isAuthenticated: boolean) => { this.isAuthenticated = isAuthenticated; });
   }
 
   createRestaurant($event: any, name: string, address: string, phone: string, description: string, form: NgForm) {

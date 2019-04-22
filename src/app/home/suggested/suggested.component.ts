@@ -47,6 +47,7 @@ export class SuggestedComponent implements OnInit {
   addFavorite(suggestion: any) {
     this.backend.addFavoriteByUserId({userId: this.loggedInUser, restaurantId: suggestion.id})
       .subscribe((response) => {
+        console.log(response);
         window.location.reload();
       });
   }

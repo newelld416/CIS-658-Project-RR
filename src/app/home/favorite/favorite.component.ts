@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 import { BackendService } from '@app/services/backend.service';
 import { finalize } from 'rxjs/operators';
+import { OktaAuthService } from '@okta/okta-angular';
 
 export interface Restaurant {
   id: number;
@@ -25,6 +26,7 @@ export interface Favorite {
 export class FavoriteComponent implements OnInit {
 
   isLoading: boolean;
+  isAuthenticated: boolean;
   displayedColumns: string[] = ['name', 'address', 'phone', 'description'];
   dataSource = new MatTableDataSource();
   favorites: Favorite[] = [];
@@ -32,11 +34,14 @@ export class FavoriteComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private backend: BackendService) {
+  constructor(private backend: BackendService, private oktaAuth: OktaAuthService  ) {
     this.isLoading = true;
   }
 
   ngOnInit() {
+    this.oktaAuth.isAuthenticated().then((result: boolean) => { this.isAuthenticated = result; });
+    this.oktaAuth.$authenticationState.subscribe((isAuthenticated: boolean) => { this.isAuthenticated = isAuthenticated; });
+
     const user = JSON.parse(localStorage.getItem('user'));
     this.getFavoritesByUserId(user);
   }
@@ -61,6 +66,8 @@ export class FavoriteComponent implements OnInit {
           }
           this.isLoading = true;
         });
+    } else {
+      this.isLoading = false;
     }
   }
 

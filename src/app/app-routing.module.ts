@@ -3,10 +3,15 @@ import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { OktaCallbackComponent } from '@okta/okta-angular';
+import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'implicit/callback',

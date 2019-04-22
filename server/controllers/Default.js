@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
 
 module.exports.addUser = function addUser (req, res, next) {
   getId(1, function(id) {
-    execute(`INSERT INTO users (userId, email, firstName, lastName) VALUES (${id}, '${req.body.email}','${req.body.firstName}', '${req.body.lstName}');`, res);
+    execute(`INSERT INTO users (userId, email, firstName, lastName) VALUES (${id}, '${req.body.email}','${req.body.firstName}', '${req.body.lastName}');`, res);
   });
 }
 
