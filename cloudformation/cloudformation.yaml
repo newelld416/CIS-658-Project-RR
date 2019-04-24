@@ -1,5 +1,10 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: CloudFront Redirect to SSL, Custom DomainName, Edge Gzip, Angular Redirects, S3 origin bucket
+Parameters:
+ Branch:
+  Description: Git branch
+  Type: String
+  Default: develop
 Resources:
  AppBucket:
   Type: AWS::S3::Bucket
@@ -26,7 +31,57 @@ Resources:
        - arn:aws:s3:::${AppBucket}/*
        - { AppBucket: !Ref AppBucket }
    Bucket: !Ref AppBucket
+ OriginAccessIdentity:
+  Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+  Properties:
+   CloudFrontOriginAccessIdentityConfig:
+    Comment: Access identity between CloudFront and S3 bucket
+ CloudFront:
+  Type: AWS::CloudFront::Distribution
+  DependsOn: AppBucket
+  Properties:
+   DistributionConfig:
+    Enabled: true
+    IPV6Enabled: true
+    HttpVersion: http2
+    DefaultRootObject: index.html
+    Comment: !Join [ '', [!Ref 'AWS::StackName', ' Angular CloudFront']]
+    Origins:
+     - DomainName: !Sub ${AppBucket}.s3.amazonaws.com
+       Id: myS3Origin
+       S3OriginConfig:
+         OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${OriginAccessIdentity}
+    DefaultCacheBehavior:
+     AllowedMethods: ["GET", "HEAD", "OPTIONS"]
+     CachedMethods: ["GET", "HEAD", "OPTIONS"]
+     ForwardedValues:
+      Headers:
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - Origin
+      - Authorization
+      QueryString: false
+      Cookies:
+       Forward: none
+     TargetOriginId: myS3Origin
+     ViewerProtocolPolicy: redirect-to-https
+     Compress: true
+     DefaultTTL: 0
+    CustomErrorResponses:
+    - ErrorCode: 404
+      ResponsePagePath: /index.html
+      ResponseCode: 200
+      ErrorCachingMinTTL: 300
+    - ErrorCode: 400
+      ErrorCachingMinTTL: 0
+    - ErrorCode: 403
+      ErrorCachingMinTTL: 1
+    - ErrorCode: 500
+      ErrorCachingMinTTL: 5
 Outputs:
  Version:
   Description: Restaurants Remembered (Production Environment)
   Value: 1.0.0
+ CloudFront:
+  Description: CloudFront ID
+  Value: !Ref CloudFront
