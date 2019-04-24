@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
  * @title Basic progress-spinner
  */
 @Component({
-  selector: 'app-apinner',
+  selector: 'app-spinner',
   templateUrl: 'spinner.component.html',
   styleUrls: ['spinner.component.scss'],
 })

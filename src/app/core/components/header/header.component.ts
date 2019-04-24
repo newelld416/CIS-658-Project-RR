@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
     });
 
     // subscribe to authentication state changes
-    this.oktaAuth.$authenticationState.subscribe((isAuthenticated: boolean)  => {
+    this.oktaAuth.$authenticationState.subscribe((isAuthenticated: boolean) => {
       this.isAuthenticated = isAuthenticated;
       this.oktaAuth.getUser().then((user: User) => {
         this.user = user;
@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
   }
 
   setUser(user: User) {
-    this.backend.getUsersByEmail({email: user.email})
+    this.backend.getUsersByEmail({ email: user.email })
       .subscribe((response) => {
         localStorage.setItem('user', JSON.stringify(response[0]));
       });

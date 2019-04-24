@@ -40,16 +40,19 @@ export class SuggestedComponent implements OnInit {
     this.oktaAuth.isAuthenticated().then((result: boolean) => { this.isAuthenticated = result; });
     this.oktaAuth.$authenticationState.subscribe((isAuthenticated: boolean) => { this.isAuthenticated = isAuthenticated; });
 
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.loggedInUser = user.userId;
   }
 
   addFavorite(suggestion: any) {
-    this.backend.addFavoriteByUserId({userId: this.loggedInUser, restaurantId: suggestion.id})
-      .subscribe((response) => {
-        console.log(response);
-        window.location.reload();
-      });
+    this.oktaAuth.getUser().then((user: User) => {
+      this.backend.getUsersByEmail({ email: user.email })
+        .subscribe((response) => {
+          const loggedInUser = JSON.parse(JSON.stringify(response[0]));
+          this.backend.addFavoriteByUserId({ userId: loggedInUser.userId, restaurantId: suggestion.id })
+            .subscribe((res) => {
+              console.log(res);
+            });
+        });
+    });
   }
 
 }

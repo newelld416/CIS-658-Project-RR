@@ -3,7 +3,9 @@
 </div>
 <div *ngIf="!isLoading">
   <div *ngIf="!isAuthenticated">
-    You are not authenticated
+    <div class="not-authenticated">
+      This feature is only available for authenticated users
+    </div>
   </div>
   <div *ngIf="isAuthenticated">
     <div class="container mat-elevation-z8">

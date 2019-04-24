@@ -11,7 +11,12 @@ import { BackendService } from '@app/services/backend.service';
 import { OktaAuthService } from '@okta/okta-angular';
 import { SharedModule } from '@app/shared';
 @NgModule({
-  declarations: [HomeComponent, FavoriteComponent, SuggestedComponent, CreateComponent],
+  declarations: [
+    HomeComponent,
+    FavoriteComponent,
+    SuggestedComponent,
+    CreateComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,

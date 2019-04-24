@@ -36,3 +36,12 @@
     padding: 8px;
   }
 }
+
+.not-authenticated {
+  margin: 15px;
+  padding: 15px 50px 15px 50px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+  text-align: center;
+}

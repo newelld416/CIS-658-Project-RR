@@ -1,6 +1,8 @@
 
 <div *ngIf="!isAuthenticated">
-  You are not authenticated
+  <div class="not-authenticated">
+    This feature is only available for authenticated users
+  </div>
 </div>
 <div *ngIf="isAuthenticated">
   <form class="example-container" #form>
