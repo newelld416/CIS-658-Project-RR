@@ -29,7 +29,7 @@ export const environment: EnvConfig = { // TODO: clean up
     issuer: 'https://dev-587527.oktapreview.com/oauth2/default',
     clientId: '0oainf6sqdsP8vwbq0h7',
     // redirectUri: 'http://localhost:4200/implicit/callback',
-    redirectUri: 'http://restaurants-prod.s3-website.us-east-2.amazonaws.com/implicit/callback',
+    redirectUri: 'http://d2ukkwihopskiz.cloudfront.net/implicit/callback',
   },
   envValue: 'Local',
 };
