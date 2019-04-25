@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
-const BASE_URL = 'http://localhost:8081/';
+const BASE_URL = 'http://test-server-1.us-east-2.elasticbeanstalk.com:3000/';
 
 const routes = {
   getUserByEmail: (c: Context) => {
