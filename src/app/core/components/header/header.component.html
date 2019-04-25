@@ -12,7 +12,6 @@
         </div>
         <div *ngIf="isAuthenticated">
           <button mat-menu-item [disabled]="true"><span>{{userEmail}}</span></button>
-          <button mat-menu-item><span>Test Menu Button</span></button>
           <button mat-menu-item (click)="logout()"><span>Logout</span></button>
         </div>
       </mat-menu>
